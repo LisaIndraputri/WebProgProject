@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -24,5 +24,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function check()
+    {
+        if(Auth::user()->admin==0){
+            return view('home');
+        } else {
+            $users['users'] = \App\User::all();
+            return view('admin', $users);
+        }
     }
 }

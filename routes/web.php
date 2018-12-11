@@ -19,14 +19,7 @@ Route::get('/', function () {
 });
 Route::group(['middleware'=>['web','auth']], function(){
     
-    Route::get('/home', function(){
-        if(Auth::user()->admin==0){
-            return view('home');
-        } else {
-            $users['users'] = \App\User::all();
-            return view('admin', $users);
-        }
-    });
+    Route::get('/home', 'HomeController@check');
 
 });
 
