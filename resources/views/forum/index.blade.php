@@ -12,9 +12,22 @@
             position: sticky;
         }
 </style>
+
 @section('content')
 <div class="container" >
-    <div class="row justify-content-center">
+    <div class="row justify-content-center">    
+    <form role="search" method="POST" action="{{url("/searchcontent")}}" class="col-md-12">
+        @csrf
+            <div class= "input-group custom-search-form" style="margin-bottom:20px ">
+                    <input type="text" class="form-control" name="search" placeholder="Title or Category..">
+                    <span class="input-group-btn">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="material-icons">search</i></button>
+                      </span>
+                    </span>
+            </div>
+        </form>
+        
         @if(count($forums) == 0)
             <h1>Ga ada bro</h1>
         @else

@@ -22,8 +22,8 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::get('/home', 'HomeController@check');
 
 });
-
+Route::post('searchcontent', 'ForumController@searchcontent');
 Route::get('profile', 'UserController@profile');
 Route::post('register', 'Auth\RegisterController@store_avatar');
-Route::resource('/forum','ForumController');
+Route::resource('forum','ForumController');
 

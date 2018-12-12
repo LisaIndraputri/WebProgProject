@@ -16,6 +16,7 @@ class ForumController extends Controller
     public function index()
     {
         $forums = Forum::paginate(5);
+        // return $forums;
         return view('forum.index',compact('forums'));
     }
 
@@ -97,5 +98,10 @@ class ForumController extends Controller
     public function destroy(forum $forum)
     {
         //
+    }
+    public function searchcontent(Request $request)
+    {
+        $forums = Forum::where('category', 'like', "%{$request->search}%")->orWhere('title', 'like', "%{$request->search}%")->paginate(5);
+        return view('forum.index',compact('forums'));
     }
 }
