@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'address' => ['required'],
             'dob' => ['required'],
             'gender'=>['required'],
+            'avatar'=>'image|mimes:jpg, jpeg,png',
             'agree' =>['required'],
         ]);
     }

@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    dIV Forum
                 </div>
 
                 <div class="links">

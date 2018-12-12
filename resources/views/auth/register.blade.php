@@ -124,13 +124,18 @@
                                 <div class="col-md-6">
                                     <input type="file" class="form-control" name="avatar">
                                 </div>
+                                @if ($errors->has('avatar'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                         <div class="form-group row">
-                            <label for="agree" class="col-md-4 col-form-label text-md-right"></label>
+                            <label for="agree" class="col-md-3 col-form-label text-md-right"></label>
 
-                            
+                            <div class="col-md-7">
                                 <div><input id="agree" type="checkbox"class="checkbox" name="agree" value="agree" required > By registering to this website, I agree term and condition</div>
-                                
+                            </div>
 
                                 @if ($errors->has('agree'))
                                     <span class="invalid-feedback" role="alert">

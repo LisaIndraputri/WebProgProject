@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>dIV Forum</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,10 +21,15 @@
 </head>
 <body>
     <div id="app">
+        <div  class="container">
+            <div class="text-md-right">
+                    <label id="date"> </label>
+            </div>
+        </div>
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    dIV Forum
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -79,8 +84,28 @@
         </nav>
 
         <main class="py-4">
+           
             @yield('content')
         </main>
     </div>
 </body>
+<script>
+    var now = new Date();
+    var day = now.getDate();
+    var month = now.getMonth();
+    var year = now.getFullYear();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+
+    if (hour < 10)
+        hour = "0" + hour;
+    if (minute < 10)
+        minute = "0" + minute;
+    if (second < 10)
+        second = "0" + second;
+
+    document.getElementById("date").innerHTML = day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
+    setTimeout(startTime, 1000);
+</script>
 </html>

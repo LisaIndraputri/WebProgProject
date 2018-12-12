@@ -25,5 +25,5 @@ Route::group(['middleware'=>['web','auth']], function(){
 
 Route::get('profile', 'UserController@profile');
 Route::post('register', 'Auth\RegisterController@store_avatar');
-
+Route::resource('/forum','ForumController');
 
