@@ -39,7 +39,7 @@
                             <p>Category: {{$forum->category}} </p>
                             <p>Posted at: {{$forum->created_at}} </p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12" style="height: auto">
                     <p> {{$forum->content}} </p>
                     <a href="{{url('forum/'.$forum->id.'/edit')}}">Edit</a>
                     </div>
