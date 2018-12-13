@@ -24,4 +24,4 @@ Route::post('searchcontent', 'ForumController@searchcontent');
 Route::get('profile', 'UserController@profile');
 Route::post('register', 'Auth\RegisterController@store_avatar');
 Route::resource('forum','ForumController');
-
+Route::get('myforum/{user}', 'MyforumController@index');

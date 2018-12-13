@@ -38,14 +38,13 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-      
         $forums = New Forum;
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;
         $forums->category = $request->category;
         $forums->content = $request->content;
         $forums->save();
-        return back();
+        return redirect('forum');
     }
 
     /**
@@ -86,7 +85,7 @@ class ForumController extends Controller
         $forums->category = $request->category;
         $forums->content = $request->content;
         $forums->save();
-        return back();
+        return redirect('forum');
     }
 
     /**
