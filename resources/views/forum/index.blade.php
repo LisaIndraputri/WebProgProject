@@ -3,7 +3,8 @@
     .button {
             background-color : #31B0D5;
             color: white;
-            padding: 25px 35px;
+            width: 50px;
+            height: 50px;
             border: 0;
             border-radius: 40px;
             right: 0px;
@@ -12,6 +13,7 @@
             position: sticky;
             cursor: pointer;
         }
+
 </style>
 
 @section('content')
@@ -36,7 +38,11 @@
             <div class="col-sm-12" style="margin-bottom:20px">
                 <div class="card">
                     <div class="card-header " >
-                        <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
+                        @if($forum->status == 'Open')
+                            <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
+                        @else
+                            <h5>{{$forum->title}} <span class="badge badge-danger" style="float:right;">{{$forum->status}}</span></h5>
+                        @endif
                         <p>Category: {{$forum->category}} </p>
                         <p>Posted at: {{$forum->created_at}} </p>
                         <p></p>
@@ -57,7 +63,7 @@
  
     </div>
     @auth
-        <a href="{{url('forum/create')}}"><button class="button">+</button></a>
+        <a href="{{url('forum/create')}}"><button class="button mb-5" style="font-size: 30px;">+</button></a>
     @endauth
 </div>
 

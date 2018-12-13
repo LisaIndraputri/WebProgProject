@@ -84,6 +84,7 @@ class ForumController extends Controller
         $forums->title = $request->title;
         $forums->category = $request->category;
         $forums->content = $request->content;
+        $forums->status = $request->status;
         $forums->save();
         return redirect('forum');
     }

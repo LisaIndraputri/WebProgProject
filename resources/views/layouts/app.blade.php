@@ -31,9 +31,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     dIV Forum
                 </a>
-                <a class="navbar-brand" href="{{ url('/myforum/'.Auth::user()->id) }}">
-                    My Forum
-                </a>
+                @auth
+                    <a class="navbar-brand" href="{{ url('/myforum/'.Auth::user()->id) }}">
+                        My Forum
+                    </a>
+                @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -111,3 +113,9 @@
     setTimeout(startTime, 1000);
 </script>
 </html>
+
+<style>
+    .navbar-light .navbar-brand:hover{
+        color: blue;
+    }
+</style>

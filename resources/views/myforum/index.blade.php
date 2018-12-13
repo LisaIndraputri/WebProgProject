@@ -36,13 +36,17 @@
             <div class="col-sm-12" style="margin-bottom:20px">
                 <div class="card">
                     <div class="card-header " >
-                            <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
+                            @if($forum->status == 'Open')
+                                <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
+                            @else
+                                <h5>{{$forum->title}} <span class="badge badge-danger" style="float:right;">{{$forum->status}}</span></h5>
+                            @endif
                             <p>Category: {{$forum->category}} </p>
                             <p>Posted at: {{$forum->created_at}} </p>
                             <p></p>
                     </div>
-                    <div class="col-md-12">
-                    <p> {{$forum->content}} </p>
+                    <div class="col-xs-12 ml-3 mt-3 mb-3" >
+                        <p > {{$forum->content}} </p>
                         <a href="{{url('forum/'.$forum->id.'/edit')}}">Edit</a>
                     </div>
                 </div>
