@@ -19,6 +19,7 @@ class CreateForumsTable extends Migration
             $table->string('title');
             $table->string('category');
             $table->text('content');
+            $table->string('status')->default('open');
             $table->timestamps();
         });
     }

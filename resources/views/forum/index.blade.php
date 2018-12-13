@@ -35,9 +35,10 @@
             <div class="col-md-12" style="margin-bottom:20px ">
                 <div class="card" >
                     <div class="card-header " >
-                            <h5>{{$forum->title}}</h5>
+                            <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
                             <p>Category: {{$forum->category}} </p>
                             <p>Posted at: {{$forum->created_at}} </p>
+                            <p></p>
                     </div>
                     <div class="col-md-12" style="height: auto">
                     <p> {{$forum->content}} </p>
