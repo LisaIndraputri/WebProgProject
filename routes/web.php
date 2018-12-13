@@ -14,9 +14,7 @@
 
 
 Auth::routes();
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ForumController@index');
 Route::group(['middleware'=>['web','auth']], function(){
     
     Route::get('/home', 'HomeController@check');

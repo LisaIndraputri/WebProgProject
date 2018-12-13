@@ -23,12 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('forum.index');
     }
     public function check()
     {
         if(Auth::user()->admin==0){
-            return view('home');
+            return redirect('/forum');
         } else {
             $users['users'] = \App\User::all();
             return view('admin', $users);
