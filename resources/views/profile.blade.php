@@ -19,34 +19,34 @@
         <div class="col-md-4">
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Name</b></div>
-                <div class="col-md-6">{{Auth::user()->name}}</div>
+                <div class="col-md-6">{{$user->name}}</div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Popularity</b></div>
                 <div class="col-md-6">
-                    <h5><span class="badge large badge-success mr-2" style="float:left;">+ {{Auth::user()->popularity_positive}}</span>
-                    <span class="badge large badge-danger mr-2" style="float:left;">+ {{Auth::user()->popularity_negative}}</span></h5>
+                    <h5><span class="badge large badge-success mr-2" style="float:left;">+ {{$user->popularity_positive}}</span>
+                    <span class="badge large badge-danger mr-2" style="float:left;">+ {{$user->popularity_negative}}</span></h5>
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Email</b></div>
-                <div class="col-md-6">{{Auth::user()->email}}</div>
+                <div class="col-md-6">{{$user->email}}</div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Phone</b></div>
-                <div class="col-md-6">{{Auth::user()->phone}}</div>
+                <div class="col-md-6">{{$user->phone}}</div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Birthday</b></div>
-                <div class="col-md-6">{{Auth::user()->dob}}</div>
+                <div class="col-md-6">{{$user->dob}}</div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Gender</b></div>
-                <div class="col-md-6">{{Auth::user()->gender}}</div>
+                <div class="col-md-6">{{$user->gender}}</div>
             </div>
             <div class="row justify-content-center mt-3">
                 <div class="col-md-3"><b>Address</b></div>
-                <div class="col-md-6">{{Auth::user()->address}}</div>
+                <div class="col-md-6">{{$user->address}}</div>
             </div>
         </div>
         </div>

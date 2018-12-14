@@ -48,9 +48,9 @@
                     <div class="card">
                         <div class="card-header " >
                             <h5 class="mt-2">
-                                {{-- <a href="{{url('thread/'.$forum->id)}}"> --}}
-                                <b>{{$thread->user->name}}</b>
-                                {{-- </a> --}}
+                                <a href="{{url('profile/'.$thread->user->id)}}">
+                                    <b>{{$thread->user->name}}</b>
+                                </a>
                             </h5>
                             Posted at: {{$thread->created_at}}
                             @if($thread->user_id == Auth::user()->id && $forum->status == 'open')
