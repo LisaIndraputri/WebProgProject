@@ -33,3 +33,5 @@ Route::post('thread/{forum}', 'ThreadController@store');
 Route::get('thread/{id}/edit', 'ThreadController@edit');
 Route::put('thread/{id}/update', 'ThreadController@update');
 Route::get('thread/{id}/delete', 'ThreadController@destroy');
+
+Route::get('vote/{giver}/{receiver}/{type}', 'VoterRelationshipController@create');
