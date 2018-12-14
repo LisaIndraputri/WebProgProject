@@ -36,18 +36,24 @@
             <div class="col-sm-12" style="margin-bottom:20px">
                 <div class="card">
                     <div class="card-header " >
+                        <h4 class="mt-2">
+                            <b>{{$forum->title}}</b> 
+
                             @if($forum->status == 'Open')
-                                <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
-                            @else
-                                <h5>{{$forum->title}} <span class="badge badge-danger" style="float:right;">{{$forum->status}}</span></h5>
+                                <button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;">Close</button>
+                                <a href="{{url('forum/'.$forum->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;">Edit</button></a>
                             @endif
-                            <p>Category: {{$forum->category}} </p>
-                            <p>Posted at: {{$forum->created_at}} </p>
-                            <p></p>
+                        </h4>
+                        Status : 
+                        @if($forum->status == 'Open')
+                            <span class="badge badge-success">{{$forum->status}}</span></h5>
+                        @else
+                            <span class="badge badge-danger">{{$forum->status}}</span></h5>
+                        @endif
                     </div>
-                    <div class="col-xs-12 ml-3 mt-3 mb-3" >
-                        <p > {{$forum->content}} </p>
-                        <a href="{{url('forum/'.$forum->id.'/edit')}}">Edit</a>
+                    <div class="col-xs-12 ml-3 mt-3 mb-1" >
+                        
+                        <p class = "mt-1 ml-3"> {{$forum->content}} </p>
                     </div>
                 </div>
             </div>

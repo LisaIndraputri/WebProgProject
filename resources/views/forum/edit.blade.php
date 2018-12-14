@@ -33,7 +33,7 @@
                             <label for="status">Status</label>
 
                             <div class="col-md-6">
-                            <input id="open" type="radio"class="radio-inline" @if($forum->status == 'Open') checked @endif name="status" value="Open" required> Open
+                                <input id="open" type="radio"class="radio-inline" @if($forum->status == 'Open') checked @endif name="status" value="Open" required> Open
                                 <input id="close" type="radio"class="radio-inline" @if($forum->status == 'Close') checked @endif name="status" value="Close" required> Close
 
                                 @if ($errors->has('status'))
