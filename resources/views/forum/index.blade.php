@@ -38,14 +38,20 @@
             <div class="col-sm-12" style="margin-bottom:20px">
                 <div class="card">
                     <div class="card-header " >
-                        @if($forum->status == 'Open')
-                            <h5>{{$forum->title}} <span class="badge badge-success" style="float:right;">{{$forum->status}}</span></h5>
+                        <h4 class="mt-2">
+                            <a href="{{url('thread/'.$forum->id)}}">
+                                <b>{{$forum->title}}</b>
+                            </a>
+                        </h4>
+                        @if($forum->status == 'open')
+                            <span class="badge badge-success" style="float:right;">Open</span>
                         @else
-                            <h5>{{$forum->title}} <span class="badge badge-danger" style="float:right;">{{$forum->status}}</span></h5>
+                            <span class="badge badge-danger" style="float:right;">Close</span>
                         @endif
-                        <p>Category: {{$forum->category}} </p>
-                        <p>Posted at: {{$forum->created_at}} </p>
-                        <p></p>
+                        
+                        Category: {{$forum->category}}
+                        <br>
+                        Posted at: {{$forum->created_at}}
                     </div>
 
                     <div class="col-xs-12 ml-3 mt-3" >
