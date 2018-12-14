@@ -18,7 +18,7 @@ Route::group(['middleware'=>['web','auth']], function(){
     Route::get('/home', 'HomeController@check');
 });
 Route::post('register', 'Auth\RegisterController@store_avatar');
-Route::get('profile', 'UserController@profile');
+Route::get('profile/{user}', 'UserController@profile');
 
 Route::get('/', 'ForumController@index');
 Route::post('searchcontent', 'ForumController@searchcontent');
