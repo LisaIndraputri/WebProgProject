@@ -39,16 +39,16 @@
                         <h4 class="mt-2">
                             <b>{{$forum->title}}</b> 
 
-                            @if($forum->status == 'Open')
+                        @if($forum->status == 'Open' || $forum->status == 'open')
                                 <button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;">Close</button>
                                 <a href="{{url('forum/'.$forum->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;">Edit</button></a>
                             @endif
                         </h4>
                         Status : 
-                        @if($forum->status == 'Open')
-                            <span class="badge badge-success">{{$forum->status}}</span></h5>
+                        @if($forum->status == 'Open' || $forum->status == 'open')
+                            <span class="badge badge-success">Open</span></h5>
                         @else
-                            <span class="badge badge-danger">{{$forum->status}}</span></h5>
+                            <span class="badge badge-danger">Close</span></h5>
                         @endif
                     </div>
                     <div class="col-xs-12 ml-3 mt-3 mb-1" >
