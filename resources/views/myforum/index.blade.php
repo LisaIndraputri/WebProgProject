@@ -43,8 +43,8 @@
                             </a>
 
                         @if($forum->status == 'Open' || $forum->status == 'open')
-                            <button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;">Close</button>
-                            <a href="{{url('forum/'.$forum->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;">Edit</button></a>
+                            <a href="{{url('forum/'.$forum->id.'/close')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">close</i>Close</button>
+                            <a href="{{url('forum/'.$forum->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i>Edit</button></a>
                         @endif
                         </h4>
                         Status : 

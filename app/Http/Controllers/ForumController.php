@@ -84,7 +84,6 @@ class ForumController extends Controller
         $forums->title = $request->title;
         $forums->category = $request->category;
         $forums->content = $request->content;
-        $forums->status = $request->status;
         $forums->save();
         return redirect('forum');
     }
@@ -103,5 +102,11 @@ class ForumController extends Controller
     {
         $forums = Forum::where('category', 'like', "%{$request->search}%")->orWhere('title', 'like', "%{$request->search}%")->paginate(5);
         return view('forum.index',compact('forums'));
+    }
+    public function close($forum_id){
+        $forum = Forum::find($forum_id);
+        $forum->status = 'close';
+        $forum->save();
+        return redirect('myforum/'.Auth::user()->id);
     }
 }

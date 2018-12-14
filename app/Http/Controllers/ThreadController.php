@@ -67,9 +67,10 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit($thread_id)
     {
-        //
+        $thread = Thread::find($thread_id);
+        return view('thread.edit', compact('thread'));
     }
     
     /**
@@ -79,9 +80,13 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Request $request, $thread_id)
     {
         //
+        $thread = Thread::find($thread_id);
+        $thread->content = $request->content;
+        $thread->save();
+        return redirect('thread/'.$thread->forum_id);
     }
     
     /**
@@ -90,9 +95,13 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($thread_id)
     {
         //
+        $thread = Thread::find($thread_id);
+        $forum_id = $thread->forum_id;
+        $thread->delete();
+        return redirect('thread/'.$forum_id);
     }
     
     public function searchthread(Request $request, $forum_id)

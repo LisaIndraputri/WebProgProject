@@ -53,7 +53,12 @@
                                 {{-- </a> --}}
                             </h5>
                             Posted at: {{$thread->created_at}}
+                            @if($thread->user_id == Auth::user()->id && $forum->status == 'open')
+                                <a href="{{url('thread/'.$thread->id.'/delete')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i>Delete</button></a>
+                                <a href="{{url('thread/'.$thread->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i>Edit</button></a>
+                            @endif
                         </div>
+
 
                         <div class="col-xs-12 ml-3 mt-3" >
                             <p > {{$thread->content}} </p>
@@ -75,26 +80,30 @@
               Post New Thread
             </div>
             <div class="card-body">
-              <div class="col-xs-12 ml-2 mt-1" >
-                <h6><b>Content</b></h6>
-              </div>
-              
-              <form method="POST" action="{{ url('thread/'.$forum->id) }}" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group row">
-                    <div class="col-sm-12 mx-2">
-                        <textarea type="text" name="content" class="form-control"></textarea>
-                        <button type="submit" class="btn btn-primary mt-4 col-sm-1 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" style="float: right;">Post</button>
-                        @if ($errors->has('content'))
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $errors->first('content') }}</strong>
-                          </span>
-                        @endif
-                    </div>
+              @if($forum->status == 'open')
+                <div class="col-xs-12 ml-2 mt-1" >
+                  <h6><b>Content</b></h6>
                 </div>
+                
+                <form method="POST" action="{{ url('thread/'.$forum->id) }}" enctype="multipart/form-data">
+                  @csrf
+                  <div class="form-group row">
+                      <div class="col-sm-12 mx-2">
+                          <textarea type="text" name="content" class="form-control"></textarea>
+                          <button type="submit" class="btn btn-primary mt-4 col-sm-1 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" style="float: right;">Post</button>
+                          @if ($errors->has('content'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('content') }}</strong>
+                            </span>
+                          @endif
+                      </div>
+                  </div>
 
-              </form>
-            </div>
+                </form>
+              </div>
+            @else
+              This forum has been closed
+            @endif
         </div>
     </div>
   </div>
