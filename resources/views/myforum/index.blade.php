@@ -3,7 +3,8 @@
     .button {
             background-color : #31B0D5;
             color: white;
-            padding: 25px 35px;
+            width: 50px;
+            height: 50px;
             border: 0;
             border-radius: 40px;
             right: 0px;
@@ -12,8 +13,8 @@
             position: sticky;
             cursor: pointer;
         }
-</style>
 
+</style>
 @section('content')
 <div class="container" >
     <div class="row justify-content-center">    
@@ -37,7 +38,9 @@
                 <div class="card">
                     <div class="card-header " >
                         <h4 class="mt-2">
-                            <b>{{$forum->title}}</b> 
+                            <a href="{{url('thread/'.$forum->id)}}">
+                                <b>{{$forum->title}}</b>
+                            </a>
 
                         @if($forum->status == 'Open' || $forum->status == 'open')
                             <button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;">Close</button>
@@ -65,7 +68,7 @@
  
     </div>
     @auth
-        <a href="{{url('forum/create')}}"><button class="button">+</button></a>
+        <a href="{{url('forum/create')}}"><button class="button" style="font-size: 30px;">+</button></a>
     @endauth
 </div>
 

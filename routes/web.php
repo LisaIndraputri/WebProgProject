@@ -28,3 +28,4 @@ Route::get('myforum/{user}', 'MyforumController@index');
 Route::get('thread/{forum}', 'ThreadController@index');
 Route::post('thread/{forum}/searchthread', 'ThreadController@searchthread');
 Route::post('thread/{forum}?search_keyword={thread}'. 'ThreadController@search_thread');
+Route::post('thread/{forum}', 'ThreadController@store');

@@ -9,14 +9,14 @@
             <h4 class="mt-2">
                 <b>{{$forum->title}}</b>
               </h4>
-              @if($forum->status == 'Open')
-                  <span class="badge badge-success" style="float:right;">{{$forum->status}}</span>
+              @if($forum->status == 'Open' || $forum->status == 'open')
+                  <span class="badge badge-success" style="float:right;">Open</span>
               @else
-                  <span class="badge badge-danger" style="float:right;">{{$forum->status}}</span>
+                  <span class="badge badge-danger" style="float:right;">Close</span>
               @endif
               Category : {{$forum->category}}
               <br>
-              Owner : {{$forum->user}}
+              Owner : {{$forum->user->name}}
               <br>
               Posted at : {{$forum->created_at}}
               <br>
@@ -68,7 +68,34 @@
                 </div>
             @endif
           </div>
-      </div>
+
+        </div>
+        <div class="card mt-5">
+            <div class="card-header " >
+              Post New Thread
+            </div>
+            <div class="card-body">
+              <div class="col-xs-12 ml-2 mt-1" >
+                <h6><b>Content</b></h6>
+              </div>
+              
+              <form method="POST" action="{{ url('thread/'.$forum->id) }}" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group row">
+                    <div class="col-sm-12 mx-2">
+                        <textarea type="text" name="content" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-primary mt-4 col-sm-1 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" style="float: right;">Post</button>
+                        @if ($errors->has('content'))
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $errors->first('content') }}</strong>
+                          </span>
+                        @endif
+                    </div>
+                </div>
+
+              </form>
+            </div>
+        </div>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Thread;
 use App\forum;
 use Illuminate\Http\Request;
@@ -37,9 +38,16 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $forum_id)
     {
         //
+        $thread = New Thread;
+        $thread->content = $request->content;
+        $thread->forum_id = $forum_id;
+        $thread->user_id = Auth::user()->id;
+        $thread->status = 'active';
+        $thread->save();
+        return redirect('thread/'.$forum_id);
     }
     
     /**

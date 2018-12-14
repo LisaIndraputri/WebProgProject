@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class forum extends Model
 {
     //
-    public function threads(){
+    public function thread(){
         return $this->hasMany(Thread::class);
     }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }
