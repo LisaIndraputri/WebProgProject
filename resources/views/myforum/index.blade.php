@@ -31,7 +31,7 @@
         </form>
         
         @if(count($forums) == 0)
-            <h1>Ga ada bro</h1>
+            <h4>You have not created any forum yet</h4>
         @else
             @foreach($forums as $forum)
             <div class="col-sm-12" style="margin-bottom:20px">
