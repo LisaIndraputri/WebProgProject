@@ -53,10 +53,12 @@
                                 </a>
                             </h5>
                             Posted at: {{$thread->created_at}}
-                            @if($thread->user_id == Auth::user()->id && $forum->status == 'open')
-                                <a href="{{url('thread/'.$thread->id.'/delete')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i>Delete</button></a>
-                                <a href="{{url('thread/'.$thread->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i>Edit</button></a>
-                            @endif
+                            @auth
+                                @if($thread->user_id == Auth::user()->id && $forum->status == 'open')
+                                    <a href="{{url('thread/'.$thread->id.'/delete')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i>Delete</button></a>
+                                    <a href="{{url('thread/'.$thread->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i>Edit</button></a>
+                                @endif
+                            @endauth
                         </div>
 
 

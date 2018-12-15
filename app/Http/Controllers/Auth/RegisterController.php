@@ -82,6 +82,8 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'avatar' => $data['avatar'],
             'agree' => $data['agree'],
+            'popularity_positive' => 0,
+            'popularity_negative' => 0,
         ]);
     }
  
@@ -100,7 +102,7 @@ class RegisterController extends Controller
             'agree' =>'required',
         ]);
 
-        if($validator->fails()){
+        if($validator->fails() || !$request->hasFile('avatar')){
             return back()->withErrors($validator);
         }
 
@@ -109,7 +111,8 @@ class RegisterController extends Controller
             $avatar = $request->file('avatar');
             $filename = time(). '.' . $avatar->getClientOriginalExtension();
             Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/' .$filename));
-
+            
+            $default = 0;
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -120,6 +123,8 @@ class RegisterController extends Controller
                 'gender' => $request->gender,
                 'avatar' => $filename,
                 'agree' => $request->agree,
+                'popularity_positive' => $default,
+                'popularity_negative' => $default,
             ]);
         }
         return redirect()->route('login');

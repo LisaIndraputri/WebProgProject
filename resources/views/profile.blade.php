@@ -51,6 +51,7 @@
         </div>
         </div>
     </div>
+    @auth
     @if(Auth::user()->id != $user->id)    
         <div class="row justify-content-center mt-5">
             <div class="col-md-2 border border-dark" style="text-align:center;">
@@ -82,5 +83,6 @@
             </div>
         </div>
     @endif
+    @endauth
 </div>
 @endsection

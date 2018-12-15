@@ -14,7 +14,7 @@ class AddPopularityNegativeToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('popularity_negative');
+            $table->integer('popularity_negative')->default(0);
         });
     }
 

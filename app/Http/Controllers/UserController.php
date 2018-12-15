@@ -11,9 +11,13 @@ class UserController extends Controller
 {
     //
     public function profile($id)
-    {
+    {   
+        $login_user = 0;
+        if(Auth::user() != null){
+            $login_user = Auth::user()->id;
+        }
         $user = User::find($id);
-        $voter_relationship = VoterRelationship::where('vote_giver', Auth::user()->id)->where('vote_receiver', $id)->first();
+        $voter_relationship = VoterRelationship::where('vote_giver', $login_user)->where('vote_receiver', $id)->first();
         return view('profile', compact('user', 'voter_relationship'));
     }
     
