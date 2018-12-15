@@ -37,3 +37,4 @@ Route::get('vote/{giver}/{receiver}/{type}', 'VoterRelationshipController@create
 
 Route::get('message/{user}','MessageController@index');
 Route::post('message/{user}','MessageController@store');
+Route::get('message/{id}/delete','MessageController@destroy');

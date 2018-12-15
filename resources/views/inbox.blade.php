@@ -11,12 +11,14 @@
                 <div class="card">
                     <div class="card-header " >
                         <h5 class="mt-2">
+                        <div>
+                            <a href="{{url('message/'.$message->id.'/delete')}}"><button type="submit" class="btn btn-danger ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i>Delete</button></a>
+                        </div>
                         <a href="{{url('profile/'.$message->sender->id)}}">{{$message->sender->name}}</a>
                         </h5>
                             {{$message->created_at}} 
                     </div>
                     <div class="col-xs-12 ml-3 mt-3 mb-1" >
-                        
                         <p class = "mt-1 ml-3"> {{$message->content}} </p>
                     </div>
                 </div>
