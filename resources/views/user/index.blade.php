@@ -7,7 +7,7 @@
     <div class="card">
       <div class="card-header " >
         <div>
-            <a href="{{url('/')}}"><button type="submit" class="btn btn-success btn-sm ml-1 mr-1" style="float: right;">Add new User</button></a>
+            <a href="{{url('user/create')}}"><button type="submit" class="btn btn-success btn-sm ml-1 mr-1" style="float: right;">Add new User</button></a>
         </div>
         List of user
       </div>

@@ -20,7 +20,9 @@ Route::group(['middleware'=>['web','auth']], function(){
 Route::post('register', 'Auth\RegisterController@store_avatar');
 Route::get('profile/{user}', 'UserController@profile');
 Route::get('user', 'UserController@index');
+Route::post('user', 'UserController@store');
 Route::get('user/{id}/delete', 'UserController@destroy');
+Route::get('user/create', 'UserController@create');
 
 Route::get('/', 'ForumController@index');
 Route::post('searchcontent', 'ForumController@searchcontent');
