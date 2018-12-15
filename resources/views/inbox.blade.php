@@ -10,10 +10,10 @@
             <div class="col-sm-12" style="margin-bottom:20px">
                 <div class="card">
                     <div class="card-header " >
-                        <h4 class="mt-2">
-                                {{$message->sender->name}} <br>
-                                {{$message->created_at}} <br>
-                        </h4>
+                        <h5 class="mt-2">
+                        <a href="{{url('profile/'.$message->sender->id)}}">{{$message->sender->name}}</a>
+                        </h5>
+                            {{$message->created_at}} 
                     </div>
                     <div class="col-xs-12 ml-3 mt-3 mb-1" >
                         
