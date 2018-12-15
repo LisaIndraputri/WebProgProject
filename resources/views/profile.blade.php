@@ -51,38 +51,33 @@
         </div>
         </div>
     </div>
-    @auth
-    @if(Auth::user()->id != $user->id)    
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-2 border border-dark" style="text-align:center;">
-                <div class="row justify-content-center ">
-                    <div class="col-md-12 mt-2">
-                        Give Popularity
-                    </div>
-                </div>
-                <br>
-                <div class="row justify-content-center">
-                    {{-- <h1> --}}
-                        @if($voter_relationship != null && $voter_relationship->vote_giver == Auth::user()->id && 
-                            $voter_relationship->vote_receiver == $user->id && 
-                            $voter_relationship->type == 1)
-                            <a href="{{url('vote/'.Auth::user()->id.'/'.$user->id.'/1')}}" class="btn btn-outline-success mx-3 mb-4"><i class="material-icons">add</i></a>
-                        @else
-                            <a href="{{url('vote/'.Auth::user()->id.'/'.$user->id.'/1')}}" class="btn btn-success mx-3 mb-4"><i class="material-icons">add</i></a>
-                        @endif
-
-                        @if($voter_relationship != null && $voter_relationship->vote_giver == Auth::user()->id && 
-                            $voter_relationship->vote_receiver == $user->id && 
-                            $voter_relationship->type == 0)
-                            <a href="{{url('vote/'.Auth::user()->id.'/'.$user->id.'/0')}}"  class="btn btn-outline-danger mx-3 mb-4"><i class="material-icons">remove</i></a>
-                        @else
-                            <a href="{{url('vote/'.Auth::user()->id.'/'.$user->id.'/0')}}"  class="btn btn-danger mx-3 mb-4"><i class="material-icons">remove</i></a>
-                        @endif
-                    {{-- </h1> --}}
+</div>
+@auth
+@if(Auth::user()->id != $user->id)    
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4 ml-4">
+            Message
+        </div>
+    </div>
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-4">
+            <form method="POST" action="{{ url('message/'.$user->id) }}" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group row">
+                <div class="col-sm-12 mx-2">
+                    <textarea type="text" name="content" class="form-control"></textarea>
+                    <button type="submit" class="btn btn-primary mt-4 col-sm-2 form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" style="float: right;">Send</button>
+                    @if ($errors->has('content'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('content') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
+
+            </form>
         </div>
-    @endif
-    @endauth
-</div>
+    </div>
+@endif
+@endauth
 @endsection
