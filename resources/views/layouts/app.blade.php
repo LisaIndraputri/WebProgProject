@@ -69,6 +69,9 @@
                                     <a class="dropdown-item" href="{{ url('profile/'.Auth::user()->id) }}">
                                         {{ __('Profile') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('message/'.Auth::user()->id) }}">
+                                        {{ __('Inbox') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
