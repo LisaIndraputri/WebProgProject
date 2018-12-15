@@ -77,6 +77,7 @@
           </div>
 
         </div>
+        @auth
         <div class="card mt-5">
             <div class="card-header " >
               Post New Thread
@@ -107,6 +108,7 @@
               This forum has been closed
             @endif
         </div>
+        @endauth
     </div>
   </div>
 </div>
