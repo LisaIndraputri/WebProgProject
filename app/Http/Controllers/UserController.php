@@ -46,21 +46,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'phone' => 'required|numeric',
-            'address' => 'required',
-            'dob' => 'required',
-            'gender'=>'required',
-            'agree' =>'required',
-        ]);
-
-        if($validator->fails() || !$request->hasFile('avatar')){
-            return back()->withErrors($validator);
-        }
-
+        
         if($request->hasFile('avatar'))
         {   
             $avatar = $request->file('avatar');
@@ -68,21 +54,21 @@ class UserController extends Controller
             Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/' .$filename));
             
             $default = 0;
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'phone' =>$request->phone,
-                'address' =>$request->address,
-                'dob' =>$request->dob,
-                'gender' => $request->gender,
-                'avatar' => $filename,
-                'agree' => $request->agree,
-                'popularity_positive' => $default,
-                'popularity_negative' => $default,
-            ]);
+            $user = New User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->phone =$request->phone;
+            $user->address =$request->address;
+            $user->dob =$request->dob;
+            $user->gender = $request->gender;
+            $user->avatar = $filename;
+            $user->agree = true;
+            $user->popularity_positive = $default;
+            $user->popularity_negative = $default;
+            $user->save();
         }
 
-        return redirect('user');
+        return view('user.index');
     }
 }
