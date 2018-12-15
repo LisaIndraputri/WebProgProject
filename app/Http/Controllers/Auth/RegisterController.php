@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/forum';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -90,7 +90,7 @@ class RegisterController extends Controller
 
     public function store_avatar(Request $request)
     {
-
+        
         $validator = Validator::make($request->all(),[
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
