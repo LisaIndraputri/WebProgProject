@@ -31,4 +31,10 @@ class UserController extends Controller
         $users = User::paginate(5);
         return view('user.index', compact('users'));
     }
+
+    public function destroy($user_id){
+        $user = User::find($user_id);
+        $user->delete();
+        return back();
+    }
 }

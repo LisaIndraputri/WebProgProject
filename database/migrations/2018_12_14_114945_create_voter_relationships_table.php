@@ -16,9 +16,9 @@ class CreateVoterRelationshipsTable extends Migration
         Schema::create('voter_relationships', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('vote_giver')->unsigned();
-            $table->foreign('vote_giver')->references('id')->on('users');
+            $table->foreign('vote_giver')->references('id')->on('users')->onDelete('cascade');
             $table->integer('vote_receiver')->unsigned();
-            $table->foreign('vote_receiver')->references('id')->on('users');
+            $table->foreign('vote_receiver')->references('id')->on('users')->onDelete('cascade');
             $table->integer('type'); //0 for negative, 1 for positive
             $table->timestamps();
         });

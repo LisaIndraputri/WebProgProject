@@ -42,7 +42,7 @@
                 <td>{{$user->gender}}</td>
                 <td>
                   <a href="{{url('/')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i></button></a>
-                  <a href="{{url('/')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i></button></a>
+                  <a href="{{url('user/'.$user->id.'/delete')}}"><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i></button></a>
                   </td>
               </tr>
               @endforeach

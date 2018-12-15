@@ -16,7 +16,7 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
          if (auth()->check() && $request->user()->admin==0) {
-                return redirect()->guest('home');
+                return redirect()->guest('forum');
          }
     
         return $next($request);

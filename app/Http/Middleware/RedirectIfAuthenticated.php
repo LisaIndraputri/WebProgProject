@@ -21,12 +21,12 @@ class RedirectIfAuthenticated
         {
             case 'admin':
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('admin.home');
+                    return redirect()->route('admin.forum');
                 }
                 break;
             default:
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('home');
+                    return redirect()->route('forum');
                 }
                 break;
         }
