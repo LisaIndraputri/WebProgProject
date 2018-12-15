@@ -21,4 +21,14 @@ class UserController extends Controller
         return view('profile', compact('user', 'voter_relationship'));
     }
     
+    public function index(){
+        if(Auth::user() != null){
+            if(Auth::user()->admin == 0){
+                return redirect('forum');
+            }
+        }
+
+        $users = User::paginate(5);
+        return view('user.index', compact('users'));
+    }
 }
