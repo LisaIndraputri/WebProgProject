@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header " >
                         <h4 class="mt-2">
-                                {{$message->user_id_receiver}} <br>
+                                {{$message->sender->name}} <br>
                                 {{$message->created_at}} <br>
                         </h4>
                     </div>
@@ -23,7 +23,7 @@
             </div>
             @endforeach
             <div class="col-sm-12" style="text-align: center;">
-                {{$forums->links()}}
+                {{$messages->links()}}
             </div>
         @endif
  

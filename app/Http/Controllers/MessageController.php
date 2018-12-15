@@ -20,7 +20,7 @@ class MessageController extends Controller
         if(Auth::user() != null){
             $login_user = Auth::user()->id;
         }
-        $messages = Message::where('user_id_receiver', $id)->paginate(10);
+        $messages = Message::where('receiver_id', $id)->paginate(10);
         return view('inbox', compact('messages'));
     }
 
@@ -40,9 +40,14 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $user_id)
     {
-        //
+        $messages = New Message;
+        $messages->content = $request->content;
+        $messages->sender_id = Auth::user()->id;
+        $messages->receiver_id = $user_id;
+        $messages->save();
+        return back();
     }
 
     /**

@@ -19,7 +19,6 @@ Route::group(['middleware'=>['web','auth']], function(){
 });
 Route::post('register', 'Auth\RegisterController@store_avatar');
 Route::get('profile/{user}', 'UserController@profile');
-Route::get('message/{user}','MessageController@index');
 Route::get('/', 'ForumController@index');
 Route::post('searchcontent', 'ForumController@searchcontent');
 Route::resource('forum','ForumController');
@@ -35,3 +34,6 @@ Route::put('thread/{id}/update', 'ThreadController@update');
 Route::get('thread/{id}/delete', 'ThreadController@destroy');
 
 Route::get('vote/{giver}/{receiver}/{type}', 'VoterRelationshipController@create');
+
+Route::get('message/{user}','MessageController@index');
+Route::post('message/{user}','MessageController@store');
