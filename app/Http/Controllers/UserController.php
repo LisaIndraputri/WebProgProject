@@ -74,9 +74,33 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('userprofile.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
     public function update(Request $request, $id)
+    {
+        $avatar = $request->file('avatar');
+        $filename = time(). '.' . $avatar->getClientOriginalExtension();
+        Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/' .$filename));
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->dob = $request->dob;
+        $user->gender = $request->gender;
+        $user->avatar = $filename;
+        $user->admin = $user->admin;
+        $user->agree = 'agree';
+        $user->save();
+        return redirect('user');
+    }
+    public function editprofile($id)
+    {
+        $user = User::find($id);
+        return view('userprofile.edit', compact('user'));
+    }
+    public function updateprofile(Request $request, $id)
     {
         $avatar = $request->file('avatar');
         $filename = time(). '.' . $avatar->getClientOriginalExtension();

@@ -23,8 +23,11 @@ Route::get('user', 'UserController@index');
 Route::post('user', 'UserController@store');
 Route::get('user/{id}/delete', 'UserController@destroy');
 Route::get('user/create', 'UserController@create');
+Route::get('user/{id}/editprofile','UserController@editprofile');
+Route::put('user/{id}/updateprofile','UserController@updateprofile');
 Route::get('user/{id}/edit','UserController@edit');
 Route::put('user/{id}/update','UserController@update');
+
 
 Route::get('/', 'ForumController@index');
 Route::post('searchcontent', 'ForumController@searchcontent');
