@@ -14,6 +14,11 @@
             <h2 style="text-align:center;"> {{$user->name}}</h2>
         </div>
     </div>
+    @if(Auth::user()->id == $user->id)
+    <div class="row justify-content-center">
+        <a href="{{url('user/'.$user->id.'/edit')}}"><button type="button" class="btn btn-warning btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">edit</i>Edit</button></a>
+    </div>
+    @endif
     <div class="row justify-content-center mt-3">
         {{-- <div class="col-md-4"></div> --}}
         <div class="col-md-4">
