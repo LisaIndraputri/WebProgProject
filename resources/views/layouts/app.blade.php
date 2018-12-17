@@ -36,9 +36,23 @@
                     My Forum
                 </a>
                 @if(Auth::user()->admin == 1)
-                    <a class="navbar-brand" href="{{ url('user') }}">
-                        Master User
+                <li class="nav-item dropdown" style="list-style-type: none;">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position:relative; color: black; font-size: 18px;">
+                            Master
                     </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('user') }}">
+                            User
+                        </a>
+                        <a class="dropdown-item" href="">
+                            Forum
+                        </a>
+                        <a class="dropdown-item" href="">
+                           Category
+                        </a>
+                </li>
+                
                 @endif
                 @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
