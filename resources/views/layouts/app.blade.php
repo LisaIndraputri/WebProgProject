@@ -48,7 +48,7 @@
                         <a class="dropdown-item" href="{{ url('master') }}">
                             Forum
                         </a>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ url('category') }}">
                            Category
                         </a>
                 </li>

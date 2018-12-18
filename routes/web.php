@@ -50,3 +50,9 @@ Route::get('vote/{giver}/{receiver}/{type}', 'VoterRelationshipController@create
 Route::get('message/{user}','MessageController@index');
 Route::post('message/{user}','MessageController@store');
 Route::get('message/{id}/delete','MessageController@destroy');
+
+Route::get('category', 'CategoryController@index');
+Route::post('category', 'CategoryController@store');
+Route::get('category/{category}/edit', 'CategoryController@edit');
+Route::put('category/{category}/update', 'CategoryController@update');
+Route::get('category/{category}/delete', 'CategoryController@destroy');
