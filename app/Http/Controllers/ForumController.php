@@ -19,6 +19,12 @@ class ForumController extends Controller
         // return $forums;
         return view('forum.index',compact('forums'));
     }
+    public function indexmaster()
+    {
+        $forums = Forum::paginate(10);
+        // return $forums;
+        return view('forum.master',compact('forums'));
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -32,6 +32,7 @@ Route::put('user/{id}/update','UserController@update');
 Route::get('/', 'ForumController@index');
 Route::post('searchcontent', 'ForumController@searchcontent');
 Route::resource('forum','ForumController');
+Route::get('master', 'ForumController@indexmaster');
 Route::get('forum/{forum}/close', 'ForumController@close');
 Route::get('myforum/{user}', 'MyforumController@index');
 
