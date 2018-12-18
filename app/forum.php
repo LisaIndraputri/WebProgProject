@@ -11,7 +11,7 @@ class forum extends Model
         return $this->hasMany(Thread::class);
     }
     public function category(){
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function user(){

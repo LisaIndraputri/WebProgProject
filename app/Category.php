@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public function forum(){
-        return $this->belongsTo(Forum::class);
+        return $this->hasMany(Forum::class);
     }
 }
