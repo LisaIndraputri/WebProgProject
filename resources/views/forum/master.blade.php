@@ -24,15 +24,19 @@
           <tbody>
               @foreach($forums as $i => $forum)
               <tr>
-                <th scope="row">{{$i + 1}}</th>
+                
                 <td>{{$forum->title}}</td>
-                <td>{{$forum->category}}</td>
-                <td>{{$forum->user_id}}</td>
-                <td>{{$forum->content}}</td>
-                <td>{{$forum->status}}</td>
-                <td>
-                  <a href=""><button type="button" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">close</i></button></a>
-                  <a href=""><button type="submit" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i></button></a>
+                <td style="text-align: center;">{{$forum->category}}</td>
+                <td style="text-align: center;">{{$forum->user->name}}</td>
+                <td style="text-align: center;">{{$forum->content}}</td>
+                <td style="text-align: center;">{{$forum->status}}</td>
+                <td style="text-align: center;">
+                    <a href="{{url('forum/'.$forum->id.'/delete')}}"><button type="button" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">delete</i>Delete</button></a>
+                    @if($forum->status=='open')
+                        <a href="{{url('forum/'.$forum->id.'/close')}}"><button type="button" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;"><i class="small material-icons">close</i>Close</button></a>
+                    @else
+                    <button type="button" class="btn btn-danger btn-sm ml-1 mr-1" style="float: right;" disabled ><i class="small material-icons">close</i>Close</button>
+                    @endif
                   </td>
               </tr>
               @endforeach

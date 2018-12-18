@@ -100,9 +100,11 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(forum $forum)
+    public function destroy($forum_id)
     {
-        //
+        $forums = Forum::find($forum_id);
+        $forums->delete();
+        return redirect('master');
     }
     public function searchcontent(Request $request)
     {
@@ -113,6 +115,7 @@ class ForumController extends Controller
         $forum = Forum::find($forum_id);
         $forum->status = 'close';
         $forum->save();
-        return redirect('myforum/'.Auth::user()->id);
+        //return redirect('myforum/'.Auth::user()->id);
+        return back();
     }
 }
