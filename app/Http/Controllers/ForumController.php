@@ -104,7 +104,7 @@ class ForumController extends Controller
     {
         $forums = Forum::find($forum_id);
         $forums->delete();
-        return redirect('master');
+        return view('forum.master',compact('forums'));
     }
     public function searchcontent(Request $request)
     {

@@ -25,7 +25,7 @@
               @foreach($forums as $i => $forum)
               <tr>
                 
-                <td>{{$forum->title}}</td>
+                <td style="text-align: center;">{{$forum->title}}</td>
                 <td style="text-align: center;">{{$forum->category}}</td>
                 <td style="text-align: center;">{{$forum->user->name}}</td>
                 <td style="text-align: center;">{{$forum->content}}</td>
@@ -42,7 +42,9 @@
               @endforeach
             </tbody>
           </table>
-          
+          <div class="col-sm-12" style="text-align: center;">
+            {{$forums->links()}}
+        </div>
       </div>
     </div>
   </div>
