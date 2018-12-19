@@ -14,16 +14,16 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, $message_id = -1)
     {
         $login_user = 0;
         if(Auth::user() != null){
             $login_user = Auth::user()->id;
         }
         $messages = Message::where('receiver_id', $id)->paginate(10);
-        return view('inbox', compact('messages'));
+        return view('inbox', compact('messages', 'message_id'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +33,7 @@ class MessageController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +49,7 @@ class MessageController extends Controller
         $messages->save();
         return back();
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -71,7 +71,7 @@ class MessageController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -83,7 +83,7 @@ class MessageController extends Controller
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -95,5 +95,10 @@ class MessageController extends Controller
         $message = Message::find($message_id);
         $message->delete();
         return back();
+    }
+    
+    public function reply($id, $message_id = -1)
+    {
+        return $this->index($id, $message_id);
     }
 }
