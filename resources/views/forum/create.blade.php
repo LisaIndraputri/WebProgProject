@@ -17,10 +17,9 @@
                         <div class="form-group">
                             <label for="category"> Category</label>
                             <select name="category" id="category" class="form-control">
-                                <option value="">--select category--</option>
-                                <option value="Science">Science</option>
-                                <option value="Game">Game</option>
-                                <option value="K-Drama">K-Drama</option>
+                                @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

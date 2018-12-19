@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\forum;
+use App\Category;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -33,7 +34,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        return view('forum.create');
+        $categories = Category::all();
+        return view('forum.create', compact('categories'));
     }
 
     /**
@@ -47,7 +49,7 @@ class ForumController extends Controller
         $forums = New Forum;
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;
-        $forums->category = $request->category;
+        $forums->category_id = $request->category;
         $forums->content = $request->content;
         $forums->save();
         return redirect('forum');
@@ -73,6 +75,7 @@ class ForumController extends Controller
     public function edit($id)
     {
         $forum = Forum::find($id);
+        $categories = Category::all();
         return view('forum.edit', compact('forum'));
     }
 
@@ -108,7 +111,13 @@ class ForumController extends Controller
     }
     public function searchcontent(Request $request)
     {
-        $forums = Forum::where('category', 'like', "%{$request->search}%")->orWhere('title', 'like', "%{$request->search}%")->paginate(5);
+        // $category_ids = Category::where('name', 'like', "%{$request->search}%")->get()->toArray();
+        // dd($category_ids);
+        // $forums = Forum::whereHas('category_id', $category_ids)->orWhere('title', 'like', "%{$request->search}%")->paginate(5);
+        $search = $request->search;
+        $forums = Forum::whereHas('category', function ($query) use($search){
+            $query->where('name', 'like', "%{$search}%");
+        })->orWhere('title', 'like', "%{$request->search}%")->paginate(5);
         return view('forum.index',compact('forums'));
     }
     public function close($forum_id){

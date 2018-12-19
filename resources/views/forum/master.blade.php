@@ -26,7 +26,7 @@
               <tr>
                 
                 <td style="text-align: center;">{{$forum->title}}</td>
-                <td style="text-align: center;">{{$forum->category}}</td>
+                <td style="text-align: center;">{{$forum->category->name}}</td>
                 <td style="text-align: center;">{{$forum->user->name}}</td>
                 <td style="text-align: center;">{{$forum->content}}</td>
                 <td style="text-align: center;">{{$forum->status}}</td>

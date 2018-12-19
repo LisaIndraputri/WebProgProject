@@ -49,7 +49,7 @@
                             <span class="badge badge-danger" style="float:right;">Close</span>
                         @endif
                         
-                        Category: {{$forum->category}}
+                        Category: {{$forum->category->name}}
                         <br>
                         Posted at: {{$forum->created_at}}
                     </div>

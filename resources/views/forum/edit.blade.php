@@ -18,10 +18,13 @@
                         <div class="form-group">
                             <label for="category"> Category</label>
                             <select name="category" id="category" class="form-control">
-                                <option value="{{$forum->category}}">{{$forum->category}}</option>
-                                <option value="Science">Science</option>
-                                <option value="Game">Game</option>
-                                <option value="K-Drama">K-Drama</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$forum->category}}"></option>>{{$category->name}}</option>
+                                    {{-- <option value="{{$forum->category}}">{{$forum->category}}</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Game">Game</option>
+                                    <option value="K-Drama">K-Drama</option> --}}
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

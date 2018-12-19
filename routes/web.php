@@ -29,7 +29,7 @@ Route::get('user/{id}/edit','UserController@edit');
 Route::put('user/{id}/update','UserController@update');
 
 
-Route::get('/', 'ForumController@index');
+Route::get('/', 'ForumController@index')->name('home');
 Route::post('searchcontent', 'ForumController@searchcontent');
 Route::resource('forum','ForumController');
 Route::get('master', 'ForumController@indexmaster');
