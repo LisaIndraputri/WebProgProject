@@ -76,7 +76,7 @@ class ForumController extends Controller
     {
         $forum = Forum::find($id);
         $categories = Category::all();
-        return view('forum.edit', compact('forum'));
+        return view('forum.edit', compact('forum', 'categories'));
     }
 
     /**
