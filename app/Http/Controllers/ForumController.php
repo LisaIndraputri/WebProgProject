@@ -91,7 +91,7 @@ class ForumController extends Controller
         $forums = Forum::find($id);
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;
-        $forums->category = $request->category;
+        $forums->category_id = $request->category;
         $forums->content = $request->content;
         $forums->save();
         return redirect('forum');
