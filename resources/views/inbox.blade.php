@@ -17,7 +17,7 @@
                                 <a href="{{url('message/reply/'.$message->receiver->id.'/'.$i)}}"><button type="submit" class="btn btn-primary ml-1 mr-1" style="float: right;"><i class="small material-icons">reply</i>Reply</button></a>
                             @endif
                         </div>
-                        <img src="/uploads/avatars/{{$message->sender->avatar}}" class="ml-4" style="width:27px; height:27px;position:absolute;left:0px;border-radius:50%">
+                        <img src="/uploads/avatars/{{$message->sender->avatar}}" class="ml-3" style="width:27px; height:27px;position:absolute;left:0px;border-radius:50%">
                         <a class="ml-5" href="{{url('profile/'.$message->sender->id)}}">{{$message->sender->name}}</a>
                         </h5>
                         
