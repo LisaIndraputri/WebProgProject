@@ -119,18 +119,33 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                                <label for="avatar" class="col-md-4 col-form-label text-md-right">Photo</label>
-    
-                                <div class="col-md-6">
-                                    <input type="file" class="form-control" name="avatar">
-                                </div>
-                                @if ($errors->has('avatar'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('avatar') }}</strong>
-                                    </span>
-                                @endif
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">Photo</label>
+                            
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="avatar">
+                            </div>
+                            @if ($errors->has('avatar'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('avatar') }}</strong>
+                            </span>
+                            @endif
                         </div>
                         
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">Role</label>
+
+                            <div class="col-md-6">
+                                <input id="Admin" type="radio"class="radio-inline" name="role" value="Admin" required> Admin
+                                <input id="Member" type="radio"class="radio-inline" name="role" value="Member" required> Member
+
+                                @if ($errors->has('role'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

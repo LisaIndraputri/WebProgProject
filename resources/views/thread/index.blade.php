@@ -14,7 +14,7 @@
               @else
                   <span class="badge badge-danger" style="float:right;">Close</span>
               @endif
-              Category : {{$forum->category}}
+              Category : {{$forum->category->name}}
               <br>
               Owner : {{$forum->user->name}}
               <br>

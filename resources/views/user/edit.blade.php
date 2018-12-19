@@ -102,8 +102,8 @@
                         <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
 
                         <div class="col-md-6">
-                            <input id="female" type="radio"class="radio-inline" name="gender" value="Female" {{ (old('sex') == 'female') ? 'checked' : '' }} required> Female
-                            <input id="male" type="radio"class="radio-inline" name="gender" value="Male" {{ (old('sex') == 'male') ? 'checked' : '' }} required> Male
+                            <input id="female" type="radio"class="radio-inline" name="gender" value="Female" {{ $user->gender == 'Female' ? 'checked' : '' }} required> Female
+                            <input id="male" type="radio"class="radio-inline" name="gender" value="Male" {{ $user->gender == 'Male' ? 'checked' : '' }} required> Male
 
                             @if ($errors->has('gender'))
                                 <span class="invalid-feedback" role="alert">
@@ -124,6 +124,22 @@
                                     <strong>{{ $errors->first('avatar') }}</strong>
                                 </span>
                             @endif
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="role" class="col-md-4 col-form-label text-md-right">Role</label>
+
+                        <div class="col-md-6">
+                            <input id="Admin" type="radio"class="radio-inline" name="role" value="Admin" {{ $user->admin == 1 ? 'checked' : '' }} required> Admin
+                            <input id="Member" type="radio"class="radio-inline" name="role" value="Member" {{ $user->admin == 0 ? 'checked' : '' }} required> Member
+
+                            @if ($errors->has('role'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('role') }}</strong>
+                                </span>
+                            @endif
+
+                        </div>
                     </div>
                    
                     <div class="form-group row mb-0">

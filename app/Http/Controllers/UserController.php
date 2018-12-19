@@ -31,7 +31,7 @@ class UserController extends Controller
             }
         }
 
-        $users = User::paginate(5);
+        $users = User::paginate(10);
         return view('user.index', compact('users'));
     }
 
@@ -46,7 +46,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        
+
         if($request->hasFile('avatar'))
         {   
             $avatar = $request->file('avatar');
@@ -63,13 +63,14 @@ class UserController extends Controller
             $user->dob =$request->dob;
             $user->gender = $request->gender;
             $user->avatar = $filename;
+            $user->admin = $request->role == 'Admin' ? 1 : 0;
             $user->agree = true;
             $user->popularity_positive = $default;
             $user->popularity_negative = $default;
             $user->save();
         }
 
-        return view('user.index');
+        return $this->index();
     }
     public function edit($id)
     {
@@ -90,7 +91,7 @@ class UserController extends Controller
         $user->dob = $request->dob;
         $user->gender = $request->gender;
         $user->avatar = $filename;
-        $user->admin = $user->admin;
+        $user->admin = $request->role == 'Admin' ? 1 : 0;
         $user->agree = 'agree';
         $user->save();
         return redirect('user');
