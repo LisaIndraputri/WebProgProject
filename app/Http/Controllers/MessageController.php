@@ -16,10 +16,6 @@ class MessageController extends Controller
      */
     public function index($id, $message_id = -1)
     {
-        $login_user = 0;
-        if(Auth::user() != null){
-            $login_user = Auth::user()->id;
-        }
         $messages = Message::where('receiver_id', $id)->paginate(10);
         return view('inbox', compact('messages', 'message_id'));
     }
@@ -100,5 +96,14 @@ class MessageController extends Controller
     public function reply($id, $message_id = -1)
     {
         return $this->index($id, $message_id);
+    }
+
+    public function sendReply(Request $request, $user_id) {
+        $messages = New Message;
+        $messages->content = $request->content;
+        $messages->sender_id = Auth::user()->id;
+        $messages->receiver_id = $user_id;
+        $messages->save();
+        return $this->index(Auth::user()->id, -1);
     }
 }

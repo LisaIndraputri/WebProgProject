@@ -51,6 +51,7 @@ Route::get('message/{user}','MessageController@index');
 Route::post('message/{user}','MessageController@store');
 Route::get('message/{id}/delete','MessageController@destroy');
 Route::get('message/reply/{id}/{message_id}','MessageController@reply');
+Route::post('message/reply/{id}','MessageController@sendReply');
 
 Route::get('category', 'CategoryController@index');
 Route::post('category', 'CategoryController@store');
