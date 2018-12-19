@@ -37,18 +37,18 @@
                 </a>
                 @if(Auth::user()->admin == 1)
                 <li class="nav-item dropdown" style="list-style-type: none;">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position:relative; color: black; font-size: 18px;">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position:relative; color: black; font-size: 18px;">
                             Master
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('user') }}">
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item navbar-brand" href="{{ url('user') }}">
                             User
                         </a>
-                        <a class="dropdown-item" href="{{ url('master') }}">
+                        <a class="dropdown-item navbar-brand" href="{{ url('master') }}">
                             Forum
                         </a>
-                        <a class="dropdown-item" href="{{ url('category') }}">
+                        <a class="dropdown-item navbar-brand" href="{{ url('category') }}">
                            Category
                         </a>
                 </li>
