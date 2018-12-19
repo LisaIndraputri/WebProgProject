@@ -47,7 +47,8 @@
                 <div class="col-sm-12" style="margin-bottom:20px">
                     <div class="card">
                         <div class="card-header " >
-                            <h5 class="mt-2">
+                            <img src="/uploads/avatars/{{$thread->user->avatar}}" style="width:27px; height:27px;position:absolute;left:0px;border-radius:50%">
+                            <h5 class="ml-4 mt-2">
                                 <a href="{{url('profile/'.$thread->user->id)}}">
                                     <b>{{$thread->user->name}}</b>
                                 </a>
