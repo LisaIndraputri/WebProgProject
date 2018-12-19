@@ -16,7 +16,7 @@
               @endif
               Category : {{$forum->category->name}}
               <br>
-              Owner : {{$forum->user->name}}
+              Owner : <a href="{{url('profile/'.$forum->user->id)}}">{{$forum->user->name}}</a> 
               <br>
               Posted at : {{$forum->created_at}}
               <br>
