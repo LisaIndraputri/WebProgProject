@@ -25,7 +25,11 @@
               @foreach($forums as $i => $forum)
               <tr>
                 
-                <td style="text-align: center;">{{$forum->title}}</td>
+                <td style="text-align: center;">
+                    <a href="{{url('thread/'.$forum->id)}}">
+                      {{$forum->title}}
+                    </a>
+                </td>
                 <td style="text-align: center;">{{$forum->category->name}}</td>
                 <td style="text-align: center;">{{$forum->user->name}}</td>
                 <td style="text-align: center;">{{$forum->content}}</td>
