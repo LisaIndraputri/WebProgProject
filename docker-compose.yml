@@ -1,0 +1,57 @@
+version: '3.7'
+services:
+
+  # The Application
+  app:
+    build:
+      context: ./
+      dockerfile: app.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=database"
+
+  # The Web Server
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - 8080:80
+
+  # The Database
+  database:
+    image: mysql:5.6
+    container_name: webprogproject_mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - "MYSQL_DATABASE=forum"
+      - "MYSQL_USER=admin"
+      - "MYSQL_PASSWORD=admin"
+      - "MYSQL_ROOT_PASSWORD=secret"
+    ports:
+        - "33061:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: webprogproject_phpmyadmin
+    links:
+    - database:db
+    depends_on:
+      - database
+    # environment:
+    #  - PMA_ARBITRARY=1
+    restart: always
+    ports:
+     - 8081:80
+    volumes:
+     - /sessions
+
+volumes:
+  dbdata:
