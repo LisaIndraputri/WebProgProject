@@ -32,7 +32,7 @@
               @foreach($users as $i => $user)
               <tr>
                 <th scope="row">{{$i + 1}}</th>
-                <td><img src="/uploads/avatars/{{$user->avatar}}" style="width:32px; height:32px;border-radius:50%"></td>
+                <td><img src="{{ asset('storage/' . $user->avatar) }}" style="width:32px; height:32px;border-radius:50%"></td>
               <td><a href="{{url('profile/'.$user->id)}}">{{$user->name}}</a></td>
                 <td>@if($user->admin) Admin @else Member @endif</td>
                 <td>{{$user->email}}</td>

@@ -20,7 +20,7 @@
 <div class="container" >
     <div class="row justify-content-center">    
         <form role="search" method="POST" action="{{url("/searchcontent")}}" class="col-md-12">
-        @csrf
+        {{ csrf_field() }}
             <div class= "input-group custom-search-form" style="margin-bottom:20px ">
                     <input type="text" class="form-control" name="search" placeholder="Title or Category..">
                     <span class="input-group-btn">

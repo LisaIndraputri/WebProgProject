@@ -6,7 +6,7 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-6">
-            <img src="/uploads/avatars/{{$user->avatar}}" style="width:15; height:150px;float:left;border-radius:50%;margin-right:25px;">
+            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" style="width:15; height:150px;float:left;border-radius:50%;margin-right:25px;">
         </div>
     </div>
     <div class="row justify-content-center">
@@ -96,7 +96,7 @@
     <div class="row justify-content-center mt-2">
         <div class="col-md-4">
             <form method="POST" action="{{ url('message/'.$user->id) }}" enctype="multipart/form-data">
-            @csrf
+            {{ csrf_field() }}
             <div class="form-group row">
                 <div class="col-sm-12 mx-2">
                     <textarea type="text" name="content" class="form-control"></textarea>

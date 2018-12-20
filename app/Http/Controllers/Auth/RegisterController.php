@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Image;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -106,27 +106,30 @@ class RegisterController extends Controller
             return back()->withErrors($validator);
         }
 
-        if($request->hasFile('avatar'))
-        {   
-            $avatar = $request->file('avatar');
-            $filename = time(). '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/' .$filename));
-            
-            $default = 0;
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'phone' =>$request->phone,
-                'address' =>$request->address,
-                'dob' =>$request->dob,
-                'gender' => $request->gender,
-                'avatar' => $filename,
-                'agree' => $request->agree,
-                'popularity_positive' => $default,
-                'popularity_negative' => $default,
-            ]);
-        }
+        // Old upload
+        // $avatar = $request->file('avatar');
+        // $filename = time(). '.' . $avatar->getClientOriginalExtension();
+        // Image::make($avatar)->resize(300,300)->save(public_path('/uploads/avatars/' .$filename));
+
+        // New upload
+        $path = substr($request->file('avatar')->store('public/avatars'), 7);
+
+        $date = Carbon::createFromFormat('m/d/Y', $request->dob);
+        $default = 0;
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'dob' => $date,
+            'gender' => $request->gender,
+            'avatar' => $path,
+            'agree' => $request->agree,
+            'popularity_positive' => $default,
+            'popularity_negative' => $default,
+        ]);
+        
         return redirect()->route('login');
     }
 }

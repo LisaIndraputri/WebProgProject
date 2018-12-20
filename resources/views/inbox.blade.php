@@ -33,7 +33,7 @@
                         <h6><b>Reply {{$message->sender->name}}'s Message</b></h6>
                         </div>
                         <form method="POST" action="{{ url('message/reply/'.$message->sender->id) }}" enctype="multipart/form-data">
-                            @csrf
+                            {{ csrf_field() }}
                             <div class="form-group row">
                                 <div class="col-sm-12 mx-2 mt-1">
                                     <textarea type="text" name="content" class="form-control"></textarea>

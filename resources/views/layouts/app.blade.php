@@ -6,18 +6,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
     <title>dIV Forum</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
 <body>
     <div id="app">
@@ -80,7 +84,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="position:relative; padding-left:50px;">
-                                    <img src="/uploads/avatars/{{Auth::user()->avatar}}" style="width:32px; height:32px;position:absolute;top:10px; left:10px;border-radius:50%">
+                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" style="width:32px; height:32px;position:absolute;top:10px; left:10px;border-radius:50%">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -99,7 +103,7 @@
                                    
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+                                        {{ csrf_field() }}
                                     </form>
                                 </div>
                             </li>
@@ -116,28 +120,34 @@
     </div>
 </body>
 <script>
-    var now = new Date();
-    var day = now.getDate();
-    var month = now.getMonth();
-    var year = now.getFullYear();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var second = now.getSeconds();
+$(document).ready(function() {
+    setInterval(function() {
+        var now = new Date();
+        var day = now.getDate();
+        var month = now.getMonth();
+        var year = now.getFullYear();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
 
-    if (hour < 10)
-        hour = "0" + hour;
-    if (minute < 10)
-        minute = "0" + minute;
-    if (second < 10)
-        second = "0" + second;
+        if (hour < 10)
+            hour = "0" + hour;
+        if (minute < 10)
+            minute = "0" + minute;
+        if (second < 10)
+            second = "0" + second;
 
-    document.getElementById("date").innerHTML = day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
-    setTimeout(startTime, 1000);
+        document.getElementById("date").innerHTML = day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" + second;
+    }, 1000);
+
+    // All browser support for datepicker
+    if ( $('[type="date"]').prop('type') != 'date' )
+        $('[type="date"]').datepicker();
+});
 </script>
-</html>
-
 <style>
     .navbar-light .navbar-brand:hover{
         color: blue;
     }
 </style>
+</html>

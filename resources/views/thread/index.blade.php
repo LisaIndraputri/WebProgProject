@@ -27,7 +27,7 @@
               
               {{-- <form class="mt-3" role="search" method="POST" action="{{url('thread/'.$forum->id.'?search_keyword='.$search)}}" class="col-md-12"> --}}
               <form class="mt-3" role="search" method="POST" action="{{url('thread/'.$forum->id.'/searchthread')}}" class="col-md-12">
-                @csrf
+                {{ csrf_field() }}
                   <div class= "input-group custom-search-form" style="margin-bottom:20px ">
                     <input type="text" class="form-control" name="search" placeholder="Search this Forum's thread by Content or Owner">
                     <span class="input-group-btn">
@@ -90,7 +90,7 @@
                 </div>
                 
                 <form method="POST" action="{{ url('thread/'.$forum->id) }}" enctype="multipart/form-data">
-                  @csrf
+                  {{ csrf_field() }}
                   <div class="form-group row">
                       <div class="col-sm-12 mx-2">
                           <textarea type="text" name="content" class="form-control"></textarea>
