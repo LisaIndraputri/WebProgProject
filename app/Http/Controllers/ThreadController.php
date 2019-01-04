@@ -106,7 +106,10 @@ class ThreadController extends Controller
     
     public function searchthread(Request $request, $forum_id)
     {
-        $threads = Thread::where('content', 'like', "%{$request->search}%")->orWhere('user_id', 'like', "%{$request->search}%")->paginate(5);
+        $search = $request->search;
+        $threads = Thread::whereHas('user', function ($query) use ($search) {
+            $query->where('name', 'like', "%{$search}%");
+        })->orWhere('content', 'like', "%{$request->search}%")->paginate(5);
         $forum = Forum::find($forum_id);
         return view('thread.index',compact('threads', 'forum'));
     }
